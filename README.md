@@ -1,2 +1,144 @@
 # DSTW-Final-Project
 Comprehensive technical implementation and source code for the DSTW (EL-5069) Final Project framework.
+
+# Disrupted Transit, Missed Projections: A Six-Year Post-Mortem on MTA's COVID-19 Recovery
+
+**EL5069 — Data Science dan Teknologi Web | Institut Teknologi Bandung**  
+Ardiansah · 20225006
+
+---
+
+When COVID-19 erased 93% of MTA ridership overnight, McKinsey & Company was commissioned to model recovery across six transit modes and three scenarios — a forecast that would anchor $15B+ in budget decisions through 2026. Six years later, the data tells a different story: McKinsey overestimated urban transit recovery by 22–30 percentage points (Subway MAE: 29.6 pp; Bus: 26.2 pp) while underestimating suburban demand that drove Bridges & Tunnels 16 points beyond pre-pandemic peak — a structural behavioral shift no prior-disruption model had priced in, translating to an estimated $0.79B annual revenue gap. This dashboard benchmarks 16,529 rows of MTA actuals against McKinsey's projections across trend analysis, statistical accuracy scoring, and parametric financial simulation.
+
+---
+
+## Data
+
+| Source | Coverage | Volume | Key Fields |
+|---|---|---|---|
+| MTA Open Data (Actual) | Mar 2020 – Apr 2026 | 16,529 rows | Date, Mode, Daily Count |
+| McKinsey Projection | Oct 2020 – Dec 2026 | 2,709 rows | Month, Agency, Scenario, Recovery Rate |
+
+**Pre-pandemic baselines (daily ridership, 2019):**
+
+| Mode | Baseline | Share of System |
+|---|---|---|
+| Subway | 5,500,000 | ~64% |
+| Bus | 2,000,000 | ~23% |
+| BT (Bridges & Tunnels) | 800,000 | ~9% |
+| LIRR | 300,000 | ~4% |
+| MNR | 170,000 | — |
+| SIR | 10,000 | — |
+
+Recovery rate is computed as `(actual count / 2019 baseline) × 100`, then aggregated monthly per mode.
+
+---
+
+## Analytical Framework
+
+```
+Raw Data (MTA + McKinsey)
+        │
+        ▼
+Preprocessing & Standardization
+  · Date parsing → monthly periods
+  · Count normalization (comma-stripped integers)
+  · Mode filtering (6 valid transit modes)
+        │
+        ▼
+Feature Engineering
+  · Recovery Rate (%) vs. 2019 baseline
+  · Revenue Gap (%) = 100 − Recovery Rate
+  · Monthly aggregation per agency
+        │
+   ┌────┴────┬────────────┐
+   ▼         ▼            ▼
+Trend     Statistical   Financial
+Analysis  Analytics     Simulation
+(Tab 1)   (Tab 2)       (Tab 3)
+```
+
+---
+
+## Key Findings
+
+### 1. Recovery Divergence Is Structural, Not Temporary
+
+The data reveals a consistent bifurcation between urban and commuter modes — a pattern that has persisted since 2022 and shows no sign of mean-reverting.
+
+| Mode | Actual Recovery (avg.) | McKinsey Projection | Mean Error | Verdict |
+|---|---|---|---|---|
+| BT | **107.6%** | 91.8% | +12.8 pp | McKinsey too conservative |
+| MNR | **78.0%** | 62.0% | +6.0 pp | McKinsey too conservative |
+| Bus | 52.3% | 74.8% | −26.2 pp | McKinsey too optimistic |
+| LIRR | 52.1% | 67.2% | −22.9 pp | McKinsey too optimistic |
+| SIR | 48.0% | 70.3% | −30.7 pp | McKinsey too optimistic |
+| Subway | 50.0% | 71.3% | −29.6 pp | McKinsey too optimistic |
+
+*pp = percentage points. Projection scenario: Midpoint.*
+
+### 2. McKinsey's Model Failed to Anticipate Behavioral Shifts
+
+The model was calibrated on historical recovery patterns from prior disruptions (9/11, Hurricane Sandy) — episodes where commuting resumed because office attendance resumed. The pandemic permanently restructured work patterns. Remote and hybrid work suppressed Subway and Bus demand structurally, while personal vehicle usage (BT) and leisure/suburban rail travel (MNR) rebounded beyond 2019 norms.
+
+### 3. The Forecast Error Is Largest Where It Matters Most
+
+Subway alone carries ~64% of system volume. A 29.6 pp miss on the largest mode is not a rounding error — it cascades into material financial exposure.
+
+### 4. Financial Exposure Estimate
+
+At $8B target revenue (2019) and 50% fare contribution assumption:
+
+> **Estimated annual revenue shortfall: $0.79 Billion**  
+> Equivalent to ~$66M/month in unrealized fare revenue across the system.
+
+The shortfall is front-loaded: monthly losses peaked in 2021–2022 and have declined as BT surplus partially offsets urban transit underperformance.
+
+---
+
+## Dashboard
+
+An interactive three-tab Streamlit application enables dynamic exploration of the above findings.
+
+**Tab 1 — Trend Visualization**  
+Overlay of McKinsey projections (dashed) vs. MTA actuals (solid) per mode, with a 2019 pre-pandemic reference line. Sidebar controls for mode selection and scenario filter.
+
+**Tab 2 — Statistical Analytics**  
+Uncertainty spread chart (Best vs. Worst Case band), descriptive statistics table by agency × source, and MAE accuracy scorecard.
+
+**Tab 3 — Financial Simulation**  
+Parametric revenue loss model — adjustable annual revenue target and fare contribution ratio — with monthly loss decomposition by agency. Agencies in surplus (BT) rendered as negative bars.
+
+---
+
+## Running the Dashboard
+
+```bash
+# 1. Clone
+git clone https://github.com/<username>/mta-dashboard-el5069.git
+cd mta-dashboard-el5069
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Place data files in /data (see data/README.md)
+
+# 4. Launch
+streamlit run app.py --server.port 8501
+```
+
+**Stack:** Python · Streamlit · Pandas · Plotly
+
+---
+
+## References
+
+- Halvorsen, A. et al. (2023). *Examination of New York City Transit's Bus and Subway Ridership Trends During the COVID-19 Pandemic.*
+- Wang, H. & Noland, R. B. (2021). Bikeshare and subway ridership changes during the COVID-19 pandemic in New York City. *Transport Policy*, 106, 262–270.
+- MTA & McKinsey & Company. (2020). *Financial Impact Assessment of COVID-19 on MTA Revenue.*
+- NYC Independent Budget Office. (2022). *On Track for Recovery? An Examination of the MTA's Pandemic Ridership & User-Revenues.*
+- MTA & McKinsey & Company. (2022). *2022–2026 Ridership and Revenue Impact Assessment.*
+
+---
+
+*EL5069 Data Science dan Teknologi Web · Institut Teknologi Bandung · 2025*
