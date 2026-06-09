@@ -112,20 +112,17 @@ Parametric revenue loss model — adjustable annual revenue target and fare cont
 ---
 
 ## Running the Dashboard
-
-```bash
 # 1. Clone
-git clone https://github.com/<username>/mta-dashboard-el5069.git
-cd mta-dashboard-el5069
+git clone https://github.com/asahphys/DSTW-Final-Project.git
+cd DSTW-Final-Project
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Place data files in /data (see data/README.md)
+# 3. Data files are already structured in /Aktual and /Proyeksi folders
 
 # 4. Launch
-streamlit run app.py --server.port 8501
-```
+streamlit run App/app.py --server.port 8501
 
 **Stack:** Python · Streamlit · Pandas · Plotly
 
