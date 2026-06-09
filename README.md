@@ -1,6 +1,6 @@
 ### McKinsey's Model Failed to Anticipate Behavioral Shifts
 
-The model was calibrated on historical recovery patterns from prior disruptions (9/11, Hurricane Sandy) — episodes where commuting resumed because office attendance resumed. The pandemic permanently restructured work patterns. Remote and hybrid work suppressed Subway and Bus demand structurally, while personal vehicle usage (BT) and leisure/suburban rail travel (MNR) rebounded beyond 2019 norms.
+The model was calibrated on historical recovery patterns from prior disruptions (9/11, Hurricane Sandy), episodes where commuting resumed because office attendance resumed. The pandemic permanently restructured work patterns. Remote and hybrid work suppressed Subway and Bus demand structurally, while personal vehicle usage (BT) and leisure/suburban rail travel (MNR) rebounded beyond 2019 norms.
 
 ### Financial Exposure Estimate
 
