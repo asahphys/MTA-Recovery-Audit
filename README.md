@@ -10,31 +10,6 @@ Ardiansah · 20225006
 
 When COVID-19 erased 93% of MTA ridership overnight, McKinsey & Company was commissioned to model recovery across six transit modes and three scenarios — a forecast that would anchor $15B+ in budget decisions through 2026. Six years later, the data tells a different story: McKinsey overestimated urban transit recovery by 22–30 percentage points (Subway MAE: 29.6 pp; Bus: 26.2 pp) while underestimating suburban demand that drove Bridges & Tunnels 16 points beyond pre-pandemic peak — a structural behavioral shift no prior-disruption model had priced in, translating to an estimated $0.79B annual revenue gap. This dashboard benchmarks 16,529 rows of MTA actuals against McKinsey's projections across trend analysis, statistical accuracy scoring, and parametric financial simulation.
 
-## Analytical Framework
-
-```
-Raw Data (MTA + McKinsey)
-        │
-        ▼
-Preprocessing & Standardization
-  · Date parsing → monthly periods
-  · Count normalization (comma-stripped integers)
-  · Mode filtering (6 valid transit modes)
-        │
-        ▼
-Feature Engineering
-  · Recovery Rate (%) vs. 2019 baseline
-  · Revenue Gap (%) = 100 − Recovery Rate
-  · Monthly aggregation per agency
-        │
-   ┌────┴────┬────────────┐
-   ▼         ▼            ▼
-Trend     Statistical   Financial
-Analysis  Analytics     Simulation
-(Tab 1)   (Tab 2)       (Tab 3)
-```
-
----
 
 ### McKinsey's Model Failed to Anticipate Behavioral Shifts
 
@@ -42,7 +17,7 @@ The model was calibrated on historical recovery patterns from prior disruptions 
 
 ### The Forecast Error Is Largest Where It Matters Most
 
-Subway alone carries ~64% of system volume. A 29.6 pp miss on the largest mode is not a rounding error — it cascades into material financial exposure.
+Subway alone carries ~64% of system volume. A 29.6 pp miss on the largest mode is not a rounding error, it cascades into material financial exposure.
 
 ### Financial Exposure Estimate
 
