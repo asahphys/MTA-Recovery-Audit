@@ -36,32 +36,15 @@ Analysis  Analytics     Simulation
 
 ---
 
-## Key Findings
-
-### 1. Recovery Divergence Is Structural, Not Temporary
-
-The data reveals a consistent bifurcation between urban and commuter modes — a pattern that has persisted since 2022 and shows no sign of mean-reverting.
-
-| Mode | Actual Recovery (avg.) | McKinsey Projection | Mean Error | Verdict |
-|---|---|---|---|---|
-| BT | **107.6%** | 91.8% | +12.8 pp | McKinsey too conservative |
-| MNR | **78.0%** | 62.0% | +6.0 pp | McKinsey too conservative |
-| Bus | 52.3% | 74.8% | −26.2 pp | McKinsey too optimistic |
-| LIRR | 52.1% | 67.2% | −22.9 pp | McKinsey too optimistic |
-| SIR | 48.0% | 70.3% | −30.7 pp | McKinsey too optimistic |
-| Subway | 50.0% | 71.3% | −29.6 pp | McKinsey too optimistic |
-
-*pp = percentage points. Projection scenario: Midpoint.*
-
-### 2. McKinsey's Model Failed to Anticipate Behavioral Shifts
+### McKinsey's Model Failed to Anticipate Behavioral Shifts
 
 The model was calibrated on historical recovery patterns from prior disruptions (9/11, Hurricane Sandy) — episodes where commuting resumed because office attendance resumed. The pandemic permanently restructured work patterns. Remote and hybrid work suppressed Subway and Bus demand structurally, while personal vehicle usage (BT) and leisure/suburban rail travel (MNR) rebounded beyond 2019 norms.
 
-### 3. The Forecast Error Is Largest Where It Matters Most
+### The Forecast Error Is Largest Where It Matters Most
 
 Subway alone carries ~64% of system volume. A 29.6 pp miss on the largest mode is not a rounding error — it cascades into material financial exposure.
 
-### 4. Financial Exposure Estimate
+### Financial Exposure Estimate
 
 At $8B target revenue (2019) and 50% fare contribution assumption:
 
